@@ -15,10 +15,11 @@
 .header {
     background-color: $header-bg;
     border-bottom: container("border");
-    position: fixed;
+    position: static;
     top: 0;
     width: 100%;
     z-index: zIndex("low");
+    height:140px;
 
     @include breakpoint("medium") {
         border-bottom: container("border");
@@ -173,7 +174,7 @@
         background: $header-font-color;
         content: "";
         display: block;
-        height: 2px;
+        height: 3px;
         position: absolute;
         transform: rotate(0deg);
         transition: transform 100ms ease-in, top 100ms ease-in 150ms, bottom 100ms ease-in 150ms; // 1
@@ -218,3 +219,69 @@
 
     }
 }
+
+
+.header-search .button.button--primary.form-prefixPostfix-button--postfix {
+    height: 38px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    flex: none;
+    width: 50px;
+    padding:0px;
+    font-size:0px;
+    border: 1px solid #d5d5d5;
+    border-left:none;
+    background: #f1f1f1 url(/content/img/mob-search-icon.png) 15px 9px;
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+.header-search {
+    width: calc(100% - 130px);
+    position: absolute;
+    left: 65px;
+}
+.header-search form.form{
+    margin-bottom:0px;
+}
+.header-search form.form .form-field{
+    margin-bottom:0px;
+}
+.header-search .form-prefixPostfix .form-input{
+    width:calc(100% - 50px);
+    flex:none;
+    height:38px;
+    background: #f1f1f1;
+    border: 1px solid #d5d5d5;
+    border-right:none;
+    padding: 5px 10px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.navUser-item-cartLabel {
+    display: inline-block;
+}
+.navUser{
+    width:65px;
+    top:80px;
+}
+.navUser .navUser-section--alt {
+    float: none;
+}
+.navUser-item-cartLabel {
+    font-size: 0px;
+    background: url(/content/img/cart.png);
+    background-size: 25px 25px;
+    height: 25px;
+    width: 25px;
+    background-repeat: no-repeat;
+}
+.countPill{
+    background-color: #57912b;
+}
+.navUser-item.navUser-item--cart > a.navUser-action{
+    padding:0px 20px;
+}
+
+

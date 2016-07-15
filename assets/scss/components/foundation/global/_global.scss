@@ -15,10 +15,7 @@
     }
 
     body {
-        padding-top: $header-height; // 2
-        @include breakpoint("medium") {
-            padding-top: 0;
-        }
+        padding-top: 0px;
     }
 
     figure {
