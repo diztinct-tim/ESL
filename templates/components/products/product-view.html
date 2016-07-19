@@ -8,23 +8,37 @@
         {{/if}}
     {{/each}}
 
+    
+
+    <section class="productView-images" data-image-gallery>
+        <figure class="productView-image"
+                data-image-gallery-main
+                data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
+                >
+            <a href="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}">
+                <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" data-main-image>
+            </a>
+        </figure>
+        <ul class="productView-thumbnails">
+            {{#each product.images}}
+                <li class="productView-thumbnail">
+                    <a
+                        class="productView-thumbnail-link"
+                        href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-item
+                        data-image-gallery-new-image-url="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-zoom-image-url="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}">
+                        <img src="{{getImage this 'productthumb_size' (cdn ../theme_settings.default_image_product)}}" alt="{{this.alt}}">
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </section>
+
     <section class="productView-details">
         <div class="productView-product">
             <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
 
-            <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
-                <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}><span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span></a>
-            </h2>
-            {{#if product.call_for_price}}
-                <p class="productView-price">
-                    <span>{{product.call_for_price}}</span>
-                </p>
-            {{/if}}
-            {{#if product.price}}
-                <div class="productView-price">
-                    {{> components/products/price price=product.price schema_org=schema}}
-                </div>
-            {{/if}}
             <div class="productView-rating"{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}>
                 {{#if settings.show_product_rating}}
                     {{#if product.num_reviews '>' 0}}
@@ -55,6 +69,15 @@
                     {{> components/products/modals/writeReview}}
                 {{/if}}
             </div>
+
+            {{#if product.price}}
+                <div class="productView-price">
+                    {{> components/products/price price=product.price schema_org=schema}}
+                </div>
+            {{/if}}
+
+            <p class="same-day-ship">+ Free, Same Day Shipping <a href="/shipping-returns/">details</a></p>
+
             {{product.detail_messages}}
             <dl class="productView-info">
                 {{#if product.sku}}
@@ -73,22 +96,8 @@
                     <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
                     <dd class="productView-info-value">{{product.availability}}</dd>
                 {{/if}}
-                {{#if product.weight}}
-                    <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
-                    <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
-                {{/if}}
-                {{#if product.min_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.max_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.gift_wrapping_available}}
-                    <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
-                {{/if}}
+
+
                 {{#if product.shipping}}
                     {{#if product.shipping.calculated}}
                         <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
@@ -103,41 +112,7 @@
                         {{/if}}
                     {{/if}}
                 {{/if}}
-                {{#if product.bulk_discount_rates.length}}
-                    <dt class="productView-info-name">{{lang 'products.bulk_pricing.title'}}</dt>
-                    <dd class="productView-info-value">
-                        <a href="{{product.url}}"
-                            {{#unless is_ajax }}data-reveal-id="bulkPricingModal" {{/unless}}>
-                            {{lang 'products.bulk_pricing.view'}}
-                        </a>
-                    </dd>
-
-                    <div id="bulkPricingModal" class="modal modal--small" data-reveal>
-                        <div class="modal-header">
-                            <h2 class="modal-header-title">{{lang 'products.bulk_pricing.modal_title'}}</h2>
-                            <a href="#" class="modal-close" aria-label="Close"><span aria-hidden="true">&#215;</span></a>
-                        </div>
-                        <div class="modal-body">
-                            <p>{{lang 'products.bulk_pricing.instructions'}}</p>
-                            <ul>
-                            {{#each product.bulk_discount_rates}}
-                                <li>
-                                    {{lang 'products.bulk_pricing.range' min=min max=max}}
-                                    {{#if type '===' 'percent'}}
-                                        {{lang 'products.bulk_pricing.percent' discount=discount.formatted}}
-                                    {{/if}}
-                                    {{#if type '===' 'fixed'}}
-                                        {{lang 'products.bulk_pricing.fixed' discount=discount.formatted}}
-                                    {{/if}}
-                                    {{#if type '===' 'price'}}
-                                        {{lang 'products.bulk_pricing.price' discount=discount.formatted}}
-                                    {{/if}}
-                                </li>
-                            {{/each}}
-                            </ul>
-                        </div>
-                    </div>
-                {{/if}}
+                
 
                 {{#each product.custom_fields}}
                     <dt class="productView-info-name">{{name}}:</dt>
@@ -147,37 +122,9 @@
         </div>
     </section>
 
-    <section class="productView-images" data-image-gallery>
-        <figure class="productView-image"
-                data-image-gallery-main
-                data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
-                >
-            <a href="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}">
-                <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" data-main-image>
-            </a>
-        </figure>
-        <ul class="productView-thumbnails">
-            {{#each product.images}}
-                <li class="productView-thumbnail">
-                    <a
-                        class="productView-thumbnail-link"
-                        href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
-                        data-image-gallery-item
-                        data-image-gallery-new-image-url="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
-                        data-image-gallery-zoom-image-url="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}">
-                        <img src="{{getImage this 'productthumb_size' (cdn ../theme_settings.default_image_product)}}" alt="{{this.alt}}">
-                    </a>
-                </li>
-            {{/each}}
-        </ul>
-    </section>
-
     <section class="productView-details">
         <div class="productView-options">
-            {{#if product.release_date }}
-                <p>{{product.release_date}}</p>
-            {{/if}}
-
+           
             <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
                   data-cart-item-add>
                 <input type="hidden" name="action" value="add">
@@ -192,33 +139,6 @@
                         {{{dynamicComponent 'components/products/options'}}}
                     {{/each}}
                 </div>
-
-                {{#if product.event_date}}
-                    <div class="form-field">
-                        <label class="form-label form-label--alternate form-label--inlineSmall">
-                        {{product.event_date.name}}:
-                        <small>{{lang 'common.required'}}</small>
-                        </label>
-                        <select class="form-select form-select--date" name="EventDate[Mth]" required>
-                            <option value="">{{lang 'common.month'}}</option>
-                            {{#enumerate 1 12}}
-                                <option value="{{this}}">{{getShortMonth this}}</option>
-                            {{/enumerate}}
-                        </select>
-                        <select class="form-select form-select--date" name="EventDate[Day]" required>
-                            <option value="">{{lang 'common.day'}}</option>
-                            {{#enumerate 1 31}}
-                                <option value="{{this}}">{{this}}</option>
-                            {{/enumerate}}
-                        </select>
-                        <select class="form-select form-select--date" name="EventDate[Yr]" required>
-                            <option value="">{{lang 'common.year'}}</option>
-                            {{#enumerate product.event_date.earliest_year product.event_date.latest_year}}
-                                <option value="{{this}}" >{{this}}</option>
-                            {{/enumerate}}
-                        </select>
-                    </div>
-                {{/if}}
 
                 <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
                     <label class="form-label form-label--alternate">
@@ -299,7 +219,20 @@
 
         {{>components/common/share}}
         {{{snippet 'product_details'}}}
+
+        <div class="item-deets">
+            {{product.detail_messages}}
+            <ul>
+                {{#if product.sku}}
+                    <li>SKU: {{product.sku}}</li>
+                {{/if}}
+                {{#if product.upc}}
+                    <li>UPC: {{product.upc}}</li>
+                {{/if}}
+            </ul>
+        </div>
     </section>
+
 
     <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
         <ul class="tabs" data-tab>

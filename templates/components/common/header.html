@@ -1,28 +1,49 @@
 <header class="header" role="banner">
 
-    {{#if template_file '===' 'pages/home'}}
-        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
-        </h1>
-    {{else}}
-        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
+    <div class="desk-promo-txt">
+        <div class="content-wrap">
+            <p class="left">Free next day shipping on all orders. <a href="/shipping-returns/">see details</a></p>
+            <ul>
+                <li><a href="tel:+18006726868">1-800-672-6868</a></li>
+                <li><a href="">Live Chat</a></li>
+                <li><a href="/contact-us/">Contact Us</a></li>
+            </ul>
         </div>
-    {{/if}}
-
-    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
-        <span class="mobileMenu-toggleIcon">Toggle menu</span>
-    </a>
-
-    <div class="header-search">
-        {{> components/common/search-box}}
     </div>
-    
-    {{> components/common/navigation}}
 
-    <div class="navPages-container" id="menu" data-menu>
-        {{> components/common/navigation-menu}}
+    <div class="content-wrap cf">
+
+        {{#if template_file '===' 'pages/home'}}
+            <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </h1>
+        {{else}}
+            <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </div>
+        {{/if}}
+
+
+        <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+            <span class="mobileMenu-toggleIcon">Toggle menu</span>
+            <span class="menu-txt">MENU</span>
+        </a>
+
+        <div class="header-search">
+            {{> components/common/search-box}}
+        </div>
+        
+        {{> components/common/navigation}}
+
+        <div class="navPages-container" id="menu" data-menu>
+            {{> components/common/navigation-menu}}
+        </div>
+
     </div>
 
 </header>
+
+<div class="mob-promo-txt">
+    <p>Free next day shipping on all orders. <a href="/shipping-returns/">See Details</a></p>
+</div>
     

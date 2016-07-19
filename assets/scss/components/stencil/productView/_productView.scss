@@ -15,7 +15,7 @@
 // -----------------------------------------------------------------------------
 
 .productView-images {
-    margin-bottom: spacing("double");
+    margin-bottom: 20px;
 }
 
 .productView-image {
@@ -84,17 +84,31 @@
     }
 }
 
+.productView .price-section.price-section--withoutTax {
+    font-size: 24px;
+    font-weight: 700;
+    color: #457b24;
+}
+
 .productView-title {
-    font-size: fontSize("small");
-    margin: -(spacing("half")) 0 spacing("quarter");
+    font-size: 20px;
+    margin: 0px;
+    line-height: 24px;
+    color:#000;
+    margin-bottom:20px;
 
     @include breakpoint("medium") {
-        margin-top: spacing("single");
+        margin-top: 0px;
     }
 
     @include breakpoint("large") {
         font-size: fontSize("largest");
     }
+}
+
+.same-day-ship {
+    font-size: 16px;
+    color: #457b24;
 }
 
 .productView-brand {
@@ -122,7 +136,7 @@
 
 .productView-price {
     font-size: fontSize("smaller");
-    margin-bottom: spacing("third");
+    margin:10px 0px;
 
     @include breakpoint("medium") {
         font-size: fontSize("larger");
@@ -202,7 +216,7 @@
     margin-right: spacing("quarter");
 
     @include breakpoint("small") {
-        font-family: fontFamily("headingSans");
+        font-family: "aktiv-grotesk", sans-serif;
         font-size: fontSize("smallest");
         font-weight: fontWeight("normal");
     }

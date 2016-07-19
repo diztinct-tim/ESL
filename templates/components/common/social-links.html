@@ -1,18 +1,32 @@
-{{#if social_media}}
-    <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
-    <ul class="socialLinks socialLinks--alt">
-        {{#each social_media}}
-            <li class="socialLinks-item">
-                {{#if display_name '===' 'google+'}}
-                    <a class="icon icon--google" href="{{url}}" target="_blank">
-                        <svg><use xlink:href="#icon-google" /></svg>
-                    </a>
-                {{else}}
-                    <a class="icon icon--{{display_name}}" href="{{url}}" target="_blank">
-                        <svg><use xlink:href="#icon-{{display_name}}" /></svg>
-                    </a>
-                {{/if}}
-            </li>
-        {{/each}}
-    </ul>
-{{/if}}
+<ul class="socialLinks socialLinks--alt">
+    <li>
+        <a href="">
+            <img src="{{cdn "img/fb.png"}}" alt="">
+        </a>
+    </li>    
+    <li>
+        <a href="">
+            <img src="{{cdn "img/insta.png"}}" alt="">
+        </a>
+    </li>    
+    <li>
+        <a href="">
+            <img src="{{cdn "img/twitter.png"}}" alt="">
+        </a>
+    </li>    
+    <li>
+        <a href="">
+            <img src="{{cdn "img/pinterest.png"}}" alt="">
+        </a>
+    </li>    
+    <li>
+        <a href="">
+            <img src="{{cdn "img/youtube.png"}}" alt="">
+        </a>
+    </li>    
+    <li>
+        <a href="">
+            <img src="{{cdn "img/blog.png"}}" alt="">
+        </a>
+    </li>    
+</ul>

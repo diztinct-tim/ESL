@@ -126,6 +126,10 @@
 .navUser-item--cart {
     display: block;
 
+    @include breakpoint("medium"){
+        position:relative;
+    }
+
     .navUser-action {
         color: stencilColor("navUser-color");
 
@@ -285,10 +289,34 @@
     margin-left: spacing("eighth");
     text-align: center;
     width: 20px; // 1
+    @include breakpoint("medium"){
+        width:60px;
+    }
 }
 
 .countPill--positive {
-    display: inline-block;
+    display: inline;
+    position: absolute;
+    background-color: transparent;
+    top:-5px;
+    left:30px;
+    color:#fff;
+
+    @include breakpoint("medium"){
+        top: 29px;
+        left: 0px;
+        color: #929292;
+        font-weight:500;
+    }
+
+    .hide-mobile{
+        display:none;
+        @include breakpoint("medium"){
+            display:inline;
+            text-transform:lowercase;
+        }
+    }
+
 }
 
 .countPill--alt {
