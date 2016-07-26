@@ -54,9 +54,6 @@
         text-decoration: $card-title-textDecoration;
 
         // scss-lint:disable NestingDepth
-        &:hover {
-            color: $card-title-color-hover;
-        }
     }
 }
 
@@ -115,7 +112,7 @@
     }
 
     &:hover {
-        border-color: stencilColor("color-primary");
+        // border-color: stencilColor("color-primary");
 
         // scss-lint:disable SelectorDepth, NestingDepth
         .card-body {

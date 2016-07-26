@@ -1,6 +1,6 @@
 {
-  "name": "Cornerstone",
-  "version": "1.2.2",
+  "name": "ESL 1.0.1",
+  "version": "1.0.1",
   "meta": {
     "price": 0,
     "documentation_url": "https://support.bigcommerce.com/articles/Public/Cornerstone-Theme-Manual",
@@ -49,7 +49,7 @@
     "productpage_reviews_count": 9,
     "productpage_related_products_count": 10,
     "productpage_similar_by_views_count": 10,
-    "categorypage_products_per_page": 12,
+    "categorypage_products_per_page": 24,
     "brandpage_products_per_page": 12,
     "searchpage_products_per_page": 12,
     "show_product_quick_view": true,

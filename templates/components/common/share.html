@@ -1,13 +1,10 @@
 {{#if settings.add_this.buttons}}
-    <div class="addthis_toolbox addthis_32x32_style" addthis:url="{{url}}"
+    <div class="addthis_toolbox addthis_32x32_style share-this-pp" addthis:url="{{url}}"
          addthis:title="{{title}}">
         <ul class="socialLinks">
             {{#each settings.add_this.buttons}}
                 <li class="socialLinks-item socialLinks-item--{{service}}">
                     <a class="addthis_button_{{service}} icon icon--{{service}}" {{{annotation}}}>
-                        {{#if service '===' 'google_plusone'}}
-                            <!-- No custom icons allowed with g+ -->
-                        {{/if}}
 
                         {{#if service '===' 'facebook'}}
                             <svg>
@@ -33,29 +30,6 @@
                             </svg>
                         {{/if}}
 
-                        {{#if service '===' 'linkedin'}}
-                            <svg>
-                                <use xlink:href="#icon-linkedin"/>
-                            </svg>
-                        {{/if}}
-
-                        {{#if service '===' 'google'}}
-                            <svg>
-                                <use xlink:href="#icon-google"/>
-                            </svg>
-                        {{/if}}
-
-                        {{#if service '===' 'pinterest'}}
-                            <svg>
-                                <use xlink:href="#icon-pinterest"/>
-                            </svg>
-                        {{/if}}
-
-                        {{#if service '===' 'facebook_like'}}
-                            <svg>
-                                <use xlink:href="#icon-facebook_like"/>
-                            </svg>
-                        {{/if}}
                     </a>
                 </li>
             {{/each}}

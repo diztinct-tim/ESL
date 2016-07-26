@@ -14,6 +14,14 @@
 
 $aktiv: "aktiv-grotesk", sans-serif;
 
+.header.home{
+
+    @include breakpoint("medium"){
+        height:200px;
+    }
+
+}
+
 .header {
     background-color: $header-bg;
     border-bottom: container("border");
@@ -28,7 +36,7 @@ $aktiv: "aktiv-grotesk", sans-serif;
         overflow: visible;
         position: relative;
 
-        height:200px;
+        height:180px;
 
     }
 
@@ -255,7 +263,7 @@ $aktiv: "aktiv-grotesk", sans-serif;
     font-size:0px;
     border: 2px solid #d5d5d5;
     border-left:none;
-    background: #f1f1f1 url(/content/img/mob-search-icon.png) 15px 8px;
+    background: #f1f1f1 url(../../content/img/mob-search-icon.png) 15px 8px;
     background-size: 18px 18px;
     background-repeat: no-repeat;
     border-bottom-left-radius: 0px;
@@ -278,6 +286,12 @@ $aktiv: "aktiv-grotesk", sans-serif;
         left: auto;
         float: left;
         margin: 20px 10px 10px 0px;
+    }
+    @include breakpoint("large"){
+        width: calc(100% - 555px);
+    }
+    @media only screen and (min-width : 1120px) {
+        width: calc(100% - 615px);
     }
 }
 .header-search form.form{
@@ -326,26 +340,40 @@ $aktiv: "aktiv-grotesk", sans-serif;
         padding: 0px;
         height:44px;
     }
+    @include breakpoint("large"){
+        width:215px;
+    }
+    @media only screen and (min-width : 1120px) {
+        width:280px;
+        padding:0px 20px;
+    }
 }
 .navUser .navUser-section--alt {
     float: none;
+    position:relative;
 }
 .navUser-item-cartLabel {
     font-size: 0px;
-    background: url(/content/img/cart.png);
+    background: url(../../content/img/cart.png);
     background-size: 23px 23px;
     height: 23px;
     width: 23px;
     background-repeat: no-repeat;
     @include breakpoint("medium"){
-        background: url(/content/img/cart-lighter.png);
+        background: url(/content/img/cartDesk.png);
         background-size: 28px 28px;
         height: 28px;
         width: 28px;
         background-repeat: no-repeat;
         vertical-align: top;
     }
+    @include breakpoint("large"){
+        background-size: 30px 30px;
+        height: 30px;
+        width: 30px;
+    }
 }
+
 .navUser-item-cartLabel::after {
     content: "Cart";
     display: inline-block;
@@ -368,8 +396,17 @@ $aktiv: "aktiv-grotesk", sans-serif;
         font-size:14px;
     }
 }
+.navUser-section.navUser-section--alt {
+    @include breakpoint("large"){
+        height: 45px;
+    }
+}
 .navUser-item.navUser-item--cart > a.navUser-action{
     padding:0px 20px;
+    @include breakpoint("large"){
+        padding: 8px 45px 10px 18px;
+    }
+
 }
 .mob-promo-txt{
      > p {
@@ -399,13 +436,15 @@ $aktiv: "aktiv-grotesk", sans-serif;
 
 .navUser-item.navUser-item--account {
 
-    @include breakpoint("medium") {
+    @include breakpoint("medium"){
         font-size: 0px;
-        background: url(/content/img/account.png);
+        background: url(../../content/img/account.png);
         background-size: 28px 28px;
-        height: 28px;
+        height: 46px;
+        background-repeat:no-repeat;
         width: 28px;
         margin:0px 25px;
+        cursor:pointer;
         &:after{
             content:"Account";
             text-align:center;
@@ -415,15 +454,95 @@ $aktiv: "aktiv-grotesk", sans-serif;
             color:#929292;
             position:relative;
             left:-15px;
+            cursor:pointer;
+            top:28px;
+        }
+    }
+    @include breakpoint("large"){
+        background-size: 30px 30px;
+        height: 30px;
+        width: 100px;
+        margin: 7px 0px 0px 0px;
+        background-repeat:no-repeat;
+        &:after{
+            left: 35px;
+            top: 6px;
         }
     }
 
+    @media only screen and (min-width : 1120px) {
+        // margin:7px 80px 0px 0px;
+    }
+
+}
+
+
+.account-dd {
+    display:none;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    z-index: 99;
+    padding: 20px !important;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+    top:65px;
+    left:-23px;
+    width:125px;
+    &:before{
+        content:"";
+        position:absolute;
+        display:inline-block;
+        height:0px;
+        width:0px;
+        border:10px solid transparent;
+        border-bottom-color:#fff;
+        top:-19px;
+        left: calc(50% - 10px);
+        z-index:101;
+    }
+    &:after{
+        content:"";
+        position:absolute;
+        display:inline-block;
+        height:0px;
+        width:0px;
+        border:10px solid transparent;
+        border-bottom-color:#ccc;
+        top:-20px;
+        z-index:100;
+        left: calc(50% - 10px);
+    }
+    li a {
+        padding: 5px 0px !important;
+        font-size: 14px !important;
+        text-transform: none;
+        font-weight: 500;
+    }
 }
 
 .content-wrap{
     margin:0 auto;
     max-width:1280px;
 }
+
+h5.desk-only{
+    display:none;
+    @include breakpoint("medium"){
+        display: block;
+        margin-top: 0px;
+        font-size: 16px;
+        text-transform: capitalize;
+        font-weight: 700;
+    }
+    @include breakpoint("large"){
+        font-size:20px;
+    }
+}
+
+.always-hidden-wrapper{
+    display:none !important;
+}
+
 
 .desk-promo-txt{
     display:none;
@@ -474,4 +593,24 @@ $aktiv: "aktiv-grotesk", sans-serif;
         }
     }
 }
+
+
+#menu {
+    @include breakpoint("medium"){
+        > nav > ul > li:hover > div {
+            display: block !important;
+            width:100%;
+            left:0px;
+        }
+    }
+    @media only screen and (min-width : 1280px) {
+        > nav > ul > li:hover > div {
+            max-width:1280px;
+            left:calc(50% - 640px);
+            padding:30px !important;
+        }
+    }
+}
+
+
 

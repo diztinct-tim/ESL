@@ -308,6 +308,10 @@
         color: #929292;
         font-weight:500;
     }
+    @include breakpoint("large"){
+        top: 14px;
+        left: 43px;
+    }
 
     .hide-mobile{
         display:none;

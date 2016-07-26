@@ -40,9 +40,7 @@
         transition: $pagination-link-transition;
 
         // scss-lint:disable NestingDepth
-        &:hover {
-            color: $pagination-link-color-hover;
-        }
+
     }
 
     &.pagination-item--current { // 1

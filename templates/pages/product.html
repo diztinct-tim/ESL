@@ -18,16 +18,59 @@ product:
 
     <div itemscope itemtype="http://schema.org/Product">
         {{> components/products/product-view schema=true}}
+        
+        <div class="bottom-pp-tabs">
+            <h5>Product Description<a name="full-description"></a></h5>
+            <div class="prod-desc cf">
+                {{{product.description}}}
 
-        {{#if product.videos.list.length}}
-            {{> components/products/videos product.videos}}
-        {{/if}}
+                <div class="right-column">
+                    <div class="have-question">
+                        <div class="top">
+                            <img src="{{cdn "img/earth.jpg"}}" alt="">
+                            <p><span>Calculate Savings!</span>
+                            See what you can save.</p>
+                        </div>
+                        <div class="bottom">
+                            <a class="extended-savings-calc" href="#">Extended Savings Calculator &raquo</a>
+                            <a class="energy-savings-calc" href="#">Energy Savings Calculator &raquo</a>
+                        </div>
+                    </div>
 
-        {{#if settings.show_product_reviews}}
-            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
-        {{/if}}
 
-        {{> components/products/tabs}}
+                    <div class="have-question">
+                        <div class="top">
+                            <img src="{{cdn "img/pp-1_03.png"}}" alt="">
+                            <p><span>Have Questions?</span>
+                            Talk to an ESL Expert.</p>
+                        </div>
+                        <div class="bottom">
+                            <a href="tel:+18006726868">1-800-672-6868 &raquo</a>
+                            <a href="/contact-us/">Contact Us &raquo</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h5>Reviews</h5>
+            <div class="pp-reviews">
+                {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+            </div>
+
+            {{#if product.similar_by_views}}
+                <h5>Customers Also Viewed</h5>
+                {{> components/products/also-viewed-carousel products=product.similar_by_views columns=5}}
+            {{else}}
+                <h5>Related Products</h5>
+                {{> components/products/related-carousel products=product.related_products columns=5}}
+            {{/if}}
+
+            <h5 class="e-s-c-heading">Extended Savings Calculator <span>Tap or click to open</span></h5>
+            <div class="e-s-c">
+            </div>
+        </div>
+
 
     </div>
 
